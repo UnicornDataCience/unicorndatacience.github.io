@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habita — Nadie debería quedarse sin casa en Madrid</title>
+<meta name="description" content="Desahucios, personas en la calle y casas vacías. Habita une a quien necesita un hogar con viviendas que puede pagar en Madrid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#12264a; --navy-soft:#1b3560; --yellow:#f5b81f; --yellow-dark:#d99e06;
+  --bg:#faf7f0; --card:#ffffff; --muted:#5b6472; --line:#e5e0d5; --red:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Nunito Sans",system-ui,sans-serif;background:var(--bg);color:var(--navy);line-height:1.55}
+h1,h2,h3,.display{font-family:"Baloo 2","Nunito Sans",sans-serif;line-height:1.1}
+img{max-width:100%;display:block}
+a{color:var(--navy)}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1rem}
+@media(min-width:640px){.wrap{padding:0 1.5rem}}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:3.75rem}
+.logo{font-family:"Baloo 2";font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none}
+.logo span{color:var(--yellow)}
+nav{display:flex;gap:1.25rem;align-items:center}
+nav a{color:#ffffffcc;text-decoration:none;font-weight:700;font-size:.95rem}
+nav a:hover{color:#fff}
+.langbtn{background:transparent;border:1px solid #ffffff55;color:#fff;border-radius:.5rem;padding:.25rem .6rem;font-weight:800;cursor:pointer;font-size:.8rem}
+.langbtn.on{background:var(--yellow);color:var(--navy);border-color:var(--yellow)}
+@media(max-width:640px){nav a{display:none}}
+
+/* Hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(to top,var(--navy) 0%,rgba(18,38,74,.7) 55%,rgba(18,38,74,.1) 100%)}
+.hero .inner{position:relative;width:100%;padding:8rem 0 3.5rem}
+.kicker{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;border-radius:999px;padding:.3rem .85rem;margin-bottom:1rem}
+.hero h1{color:#fff;font-size:clamp(2.2rem,6vw,4.5rem);max-width:56rem}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero p{color:#ffffffd9;max-width:36rem;margin-top:1.25rem;font-size:1.1rem}
+.ai-tag{position:absolute;bottom:.75rem;right:.75rem;z-index:2;background:rgba(18,38,74,.7);color:#ffffffe6;font-size:.68rem;border-radius:.4rem;padding:.2rem .5rem}
+
+/* Buttons */
+.btn{display:inline-block;font-weight:800;border-radius:.75rem;padding:.85rem 1.6rem;text-decoration:none;cursor:pointer;border:0;font-size:1rem;font-family:inherit;transition:filter .15s}
+.btn:hover{filter:brightness(.95)}
+.btn-yellow{background:var(--yellow);color:var(--navy)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:transparent;color:var(--navy);border:2px solid var(--line)}
+.btn-outline-light{background:transparent;color:#fff;border:2px solid #ffffff66}
+.cta-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+
+/* Sections */
+section{padding:4rem 0}
+.sec-navy{background:var(--navy);color:#fff}
+.sec-navy h2{color:#fff}
+.sec-yellow{background:var(--yellow);text-align:center}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+.caption{font-size:.72rem;color:var(--muted);margin-top:.4rem}
+
+/* Cifras */
+.stats{display:grid;gap:2rem;margin-top:2.5rem;grid-template-columns:1fr}
+@media(min-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{border-left:4px solid var(--yellow);padding-left:1rem}
+.stat b{font-family:"Baloo 2";font-size:2.6rem;color:var(--yellow);display:block}
+.stat small{display:block;margin-top:.4rem;font-size:.7rem;color:#ffffff99}
+.stat small a{color:#ffffff99}
+
+/* Story */
+.split{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:768px){.split{grid-template-columns:1fr 1fr}}
+.split figure img{border-radius:1.5rem;box-shadow:0 20px 40px rgba(18,38,74,.18);width:100%}
+.tag{color:var(--yellow-dark);font-weight:800;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase}
+.story p{color:var(--muted);margin-top:1rem}
+blockquote{border-left:4px solid var(--yellow);padding-left:1rem;margin-top:1.5rem;font-size:1.2rem;font-weight:700;font-style:italic}
+blockquote footer{font-size:.85rem;font-weight:400;font-style:normal;color:var(--muted);margin-top:.3rem}
+.news{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;font-weight:800;font-size:.9rem}
+
+/* Chain */
+.sec-card{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.chain{display:grid;gap:1rem;margin-top:2rem;list-style:none;grid-template-columns:1fr}
+@media(min-width:640px){.chain{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.chain{grid-template-columns:repeat(4,1fr)}}
+.chain li{background:var(--bg);border:1px solid var(--line);border-radius:1rem;padding:1.5rem}
+.chain .n{font-family:"Baloo 2";font-size:1.9rem;font-weight:800;color:var(--yellow-dark)}
+.chain h3{margin-top:.4rem;font-size:1.1rem}
+.chain p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.underline-y{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:.45rem;text-underline-offset:.5rem}
+.steps{list-style:none;margin-top:1.5rem}
+.steps li{margin-top:.8rem}
+.steps span{color:var(--muted)}
+
+/* Form */
+.formwrap{max-width:42rem;margin:0 auto;padding-bottom:7rem}
+.progress{height:.5rem;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:2rem}
+.progress i{display:block;height:100%;background:var(--yellow);transition:width .3s}
+.step h2{margin-bottom:1.25rem}
+.opts{display:grid;gap:.75rem}
+@media(min-width:640px){.opts.cols3{grid-template-columns:repeat(3,1fr)}.opts.cols2{grid-template-columns:repeat(2,1fr)}}
+.opt{min-height:3rem;border:2px solid var(--line);background:var(--card);border-radius:.85rem;padding:.8rem 1rem;text-align:left;font-family:inherit;font-weight:700;font-size:1rem;color:var(--navy);cursor:pointer}
+.opt.on{border-color:var(--navy);background:var(--navy);color:#fff}
+label{display:block;font-weight:800;margin:.9rem 0 .35rem}
+input,select{width:100%;height:3rem;border:1px solid var(--line);border-radius:.6rem;padding:0 .8rem;font-size:1rem;font-family:inherit;background:#fff;color:var(--navy)}
+.warn{background:#fdf3d7;border:1px solid var(--yellow);border-radius:.6rem;padding:.7rem;font-size:.85rem;margin-top:.8rem}
+.check{display:flex;gap:.7rem;align-items:flex-start;margin-top:1rem}
+.check input{width:1.15rem;height:1.15rem;margin-top:.2rem;flex-shrink:0}
+.check label{font-weight:400;margin:0;font-size:.92rem}
+.err{color:var(--red);font-size:.9rem;margin-top:1rem;font-weight:700}
+.navbar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:.75rem;background:var(--bg);border-top:1px solid var(--line);padding:1rem;z-index:10}
+@media(min-width:640px){.navbar{position:static;border:0;margin-top:2.5rem;padding:0}}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips .opt{min-height:2.5rem;padding:.5rem .9rem;font-size:.9rem}
+
+/* Results */
+.result-card{border:1px solid var(--line);background:var(--card);border-radius:1.5rem;padding:1.5rem;display:flex;gap:1.25rem;align-items:center;flex-direction:column;text-align:center;margin-top:2rem}
+@media(min-width:640px){.result-card{flex-direction:row;text-align:left}}
+.result-card img{width:9rem;height:9rem;object-fit:contain}
+.notice{background:#eef2f8;border-radius:.6rem;padding:.7rem;font-size:.9rem;margin-top:1rem}
+.aids{background:#eef2f8;border-radius:1rem;padding:1.5rem;margin-top:2.5rem}
+.aids ul{margin:.75rem 0 0 1.25rem}
+.aids a{font-weight:800}
+
+footer{background:var(--navy);color:#ffffff99;text-align:center;padding:2rem 1rem;font-size:.85rem}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Habita<span>·</span>Madrid</a>
+    <nav>
+      <a href="#formulario" data-i18n="nav_find">Encuentra casa</a>
+      <a href="#realidad" data-i18n="nav_reality">La realidad</a>
+      <button class="langbtn on" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="langbtn" id="btn-en" onclick="setLang('en')">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <img class="bg" src="assets/img/sol.jpg" alt="Acampada por la vivienda en la Puerta del Sol">
+    <div class="veil"></div>
+    <span class="ai-tag" data-i18n="ai">Contenido generado con IA</span>
+    <div class="wrap inner">
+      <p class="kicker" data-i18n="kicker">Madrid · emergencia de vivienda</p>
+      <h1><span data-i18n="h1a">En Madrid, tener trabajo</span> <em data-i18n="h1b">ya no garantiza tener casa.</em></h1>
+      <p data-i18n="sub">Detrás de cada desahucio hay una vida entera dentro de unas cajas. Queremos que la tuya no termine en la calle.</p>
+      <div class="cta-row">
+        <a class="btn btn-yellow" href="#formulario" data-i18n="cta">Encuentra tu casa</a>
+        <a class="btn btn-outline-light" href="#realidad" data-i18n="cta2">Conoce la realidad</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIFRAS -->
+  <section id="realidad" class="sec-navy">
+    <div class="wrap">
+      <h2 data-i18n="cifras_h">No son números. Son vecinos.</h2>
+      <div class="stats">
+        <div class="stat"><b>2.375</b><span data-i18n="s1">desahucios ejecutados en la Comunidad de Madrid en 2024</span><small><a href="https://www.poderjudicial.es" target="_blank" rel="noreferrer" data-i18n="src1">Fuente: CGPJ</a></small></div>
+        <div class="stat"><b>97 %</b><span data-i18n="s2">de los lanzamientos de la región son por impago del alquiler</span><small><a href="https://www.poderjudicial.es" target="_blank" rel="noreferrer" data-i18n="src2">Fuente: CGPJ</a></small></div>
+        <div class="stat"><b>2.384</b><span data-i18n="s3">personas sin hogar atendidas en Madrid en 2024</span><small><a href="https://www.madrid.es" target="_blank" rel="noreferrer" data-i18n="src3">Fuente: Ayto. de Madrid</a></small></div>
+        <div class="stat"><b>1.116</b><span data-i18n="s4">personas duermen a la intemperie cada noche</span><small><a href="https://www.madrid.es" target="_blank" rel="noreferrer" data-i18n="src4">Fuente: Ayto. de Madrid</a></small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARICARMEN -->
+  <section>
+    <div class="wrap split">
+      <figure>
+        <img src="assets/img/desahucio.jpg" alt="Ilustración: una mujer mayor de espaldas, sentada sobre cajas frente a un portal cerrado">
+        <figcaption class="caption" data-i18n="ai">Contenido generado con IA</figcaption>
+      </figure>
+      <div class="story">
+        <p class="tag" data-i18n="story_tag">Historia real</p>
+        <h2 data-i18n="story_h">Maricarmen, 87 años. 70 años en la misma casa.</h2>
+        <p data-i18n="story_p1">Maricarmen vivía en un sexto piso de la calle Alcalde Sainz de Baranda, en Retiro, desde 1956. Nunca dejó de pagar el alquiler. Al expirar su contrato de renta antigua, la empresa propietaria pidió el desalojo.</p>
+        <p data-i18n="story_p2">El 23 de septiembre de 2026, al cuarto intento, la sacaron en camilla mientras cientos de vecinos gritaban «no estás sola». Murió dos semanas después en el hospital Gregorio Marañón.</p>
+        <p data-i18n="story_p3">Su desahucio encendió la acampada por la vivienda en la Puerta del Sol y protestas en toda España.</p>
+        <blockquote><span data-i18n="quote">«Lo único que quería era morirse en su casa tranquila.»</span><footer data-i18n="quote_by">— Portavoz del Sindicato de Inquilinas</footer></blockquote>
+        <div class="news">
+          <a href="https://elpais.com" target="_blank" rel="noreferrer">El País</a>
+          <a href="https://www.bbc.com" target="_blank" rel="noreferrer">BBC</a>
+          <a href="https://www.europapress.es" target="_blank" rel="noreferrer">Europa Press</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CADENA -->
+  <section class="sec-card">
+    <div class="wrap">
+      <h2 data-i18n="chain_h">Así se pierde una casa</h2>
+      <ol class="chain">
+        <li><span class="n">1</span><h3 data-i18n="c1h">Sube el alquiler</h3><p data-i18n="c1d">El sueldo no sube al mismo ritmo.</p></li>
+        <li><span class="n">2</span><h3 data-i18n="c2h">Llega el desahucio</h3><p data-i18n="c2d">Contratos que vencen o no se pueden pagar.</p></li>
+        <li><span class="n">3</span><h3 data-i18n="c3h">La calle</h3><p data-i18n="c3d">Albergues llenos y noches a la intemperie.</p></li>
+        <li><span class="n">4</span><h3 data-i18n="c4h">O una casa vacía</h3><p data-i18n="c4d">Hay quien acaba ocupando por pura necesidad.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- RESPUESTA -->
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2><span data-i18n="ans_h">Hay casas vacías y personas sin casa.</span> <span class="underline-y" data-i18n="ans_h2">Las unimos.</span></h2>
+        <p style="color:var(--muted);margin-top:1.25rem" data-i18n="ans_p">Habita cruza tu oportunidad, tus ingresos y lo que necesitas cerca con viviendas reales del centro y la periferia, y te dice qué ayudas puedes pedir.</p>
+        <ol class="steps">
+          <li><strong data-i18n="st1h">1 · Cuéntanos tu oportunidad</strong> <span data-i18n="st1d">— Estudios, prácticas o empleo, dónde es, tus ingresos y tu alquiler máximo.</span></li>
+          <li><strong data-i18n="st2h">2 · Analizamos tu perfil</strong> <span data-i18n="st2d">— Cruzamos precio, trayecto, servicios y tus circunstancias con datos reales de Madrid.</span></li>
+          <li><strong data-i18n="st3h">3 · Recibe tu propuesta</strong> <span data-i18n="st3d">— Te mostramos tus mejores opciones y te enviamos la propuesta a tu email.</span></li>
+        </ol>
+        <div class="cta-row"><a class="btn btn-navy" href="#formulario" data-i18n="cta">Encuentra tu casa</a></div>
+      </div>
+      <figure>
+        <img src="assets/img/vacias.jpg" alt="Edificio con persianas bajadas y un saco de dormir en el portal">
+        <figcaption class="caption" data-i18n="ai">Contenido generado con IA</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="formulario" class="sec-card">
+    <div class="wrap formwrap">
+      <div id="form-view">
+        <div class="progress"><i id="bar" style="width:16.6%"></i></div>
+
+        <div class="step" data-step="0">
+          <h2 data-i18n="q_opp">¿Qué oportunidad te trae a Madrid?</h2>
+          <div class="opts cols3" id="opts-opp"></div>
+        </div>
+
+        <div class="step hidden" data-step="1">
+          <h2 data-i18n="q_where">¿Dónde está tu oportunidad?</h2>
+          <label for="dest" data-i18n="dest_label">Distrito o municipio</label>
+          <select id="dest"></select>
+        </div>
+
+        <div class="step hidden" data-step="2">
+          <h2 data-i18n="q_money">Tu dinero</h2>
+          <label for="income" data-i18n="income">Ingresos mensuales (€)</label>
+          <input id="income" type="number" min="0" max="50000" value="1150">
+          <label for="budget" data-i18n="budget">Alquiler máximo (€/mes)</label>
+          <input id="budget" type="number" min="100" max="10000" value="450">
+          <p class="warn hidden" id="warn40"></p>
+        </div>
+
+        <div class="step hidden" data-step="3">
+          <h2 data-i18n="q_live">Cómo vives</h2>
+          <label for="hh" data-i18n="household">Personas en el hogar</label>
+          <input id="hh" type="number" min="1" max="12" value="1">
+          <label for="commute" data-i18n="commute">Trayecto máximo (minutos)</label>
+          <input id="commute" type="number" min="5" max="180" value="45">
+          <div class="opts cols2" style="margin-top:1rem">
+            <button type="button" class="opt" id="opt-share" onclick="toggle('share')"></button>
+            <button type="button" class="opt" id="opt-car" onclick="toggle('car')"></button>
+          </div>
+        </div>
+
+        <div class="step hidden" data-step="4">
+          <h2 data-i18n="q_needs">¿Qué necesitas cerca?</h2>
+          <div class="chips" id="chips-needs"></div>
+        </div>
+
+        <div class="step hidden" data-step="5">
+          <h2 data-i18n="q_contact">Recibe tu propuesta</h2>
+          <p style="color:var(--muted)" data-i18n="contact_p">Te enviaremos por email las viviendas que mejor encajan con tu perfil.</p>
+          <label for="email" data-i18n="email">Email</label>
+          <input id="email" type="email" maxlength="255" autocomplete="email">
+          <label for="name" data-i18n="name">Tu nombre (opcional)</label>
+          <input id="name" type="text" maxlength="100" autocomplete="name">
+          <div class="check">
+            <input type="checkbox" id="consent">
+            <label for="consent"><span data-i18n="consent">Acepto que Habita trate mis datos para enviarme una propuesta de vivienda, según la</span> <a href="#" data-i18n="privacy_link">política de privacidad</a>. *</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="mkt">
+            <label for="mkt" data-i18n="consent_mkt">Quiero recibir novedades de Habita (opcional).</label>
+          </div>
+        </div>
+
+        <p class="err hidden" id="err" role="alert"></p>
+        <div class="navbar">
+          <button class="btn btn-ghost" id="btn-back" onclick="prev()" disabled data-i18n="back">Atrás</button>
+          <button class="btn btn-navy" id="btn-next" onclick="next()" data-i18n="next">Siguiente</button>
+        </div>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="result-view" class="hidden">
+        <p class="tag" id="res-flow"></p>
+        <h2 id="res-title" style="margin-top:.5rem"></h2>
+        <p class="notice" id="res-sent"></p>
+        <div class="result-card">
+          <figure style="flex-shrink:0">
+            <img src="assets/img/bot.png" alt="Asistente IA de Habita">
+            <figcaption class="caption" style="text-align:center" data-i18n="ai">Contenido generado con IA</figcaption>
+          </figure>
+          <p style="font-size:1.25rem;font-weight:800" data-i18n="none">En breve recibirás una recomendación de nuestro asistente IA.</p>
+        </div>
+        <div class="aids">
+          <h3 data-i18n="aids">Ayudas que podrías pedir</h3>
+          <ul id="aids-list"></ul>
+        </div>
+        <button class="btn btn-ghost" style="margin-top:2rem" onclick="restart()" data-i18n="restart">Empezar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="sec-yellow">
+    <div class="wrap">
+      <h2 data-i18n="final_h">Nadie debería elegir entre su oportunidad y un techo.</h2>
+      <div class="cta-row" style="justify-content:center"><a class="btn btn-navy" href="#formulario" data-i18n="final_cta">Empieza ahora, es gratis</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>Habita Madrid · <span data-i18n="footer">Prototipo de hackathon — datos de ejemplo</span></footer>
+
+<script>
+const WEBHOOK_URL = "https://hook.eu1.make.com/i5ak4hn6tjuj50dh0kxkcgz8p1nowe4y";
+
+const DISTRITOS = ["Arganzuela","Barajas","Carabanchel","Centro","Chamartín","Chamberí","Ciudad Lineal","Fuencarral-El Pardo","Hortaleza","Latina","Moncloa-Aravaca","Moratalaz","Puente de Vallecas","Retiro","Salamanca","San Blas-Canillejas","Tetuán","Usera","Vicálvaro","Villa de Vallecas","Villaverde"];
+const MUNICIPIOS = ["Alcalá de Henares","Alcobendas","Alcorcón","Coslada","Getafe","Hoyo de Manzanares","Humanes de Madrid","Leganés","Paracuellos de Jarama","Pozuelo de Alarcón","Rozas de Madrid, Las","San Fernando de Henares","San Sebastián de los Reyes","Torrejón de Ardoz","Valdemoro","Villaviciosa de Odón"];
+const NECESIDADES = ["transporte_publico","colegio","centro_salud","supermercado","fibra","zonas_verdes","accesibilidad","guarderia","farmacia","ocio"];
+
+const I18N = {
+es:{
+ nav_find:"Encuentra casa",nav_reality:"La realidad",ai:"Contenido generado con IA",
+ kicker:"Madrid · emergencia de vivienda",h1a:"En Madrid, tener trabajo",h1b:"ya no garantiza tener casa.",
+ sub:"Detrás de cada desahucio hay una vida entera dentro de unas cajas. Queremos que la tuya no termine en la calle.",
+ cta:"Encuentra tu casa",cta2:"Conoce la realidad",cifras_h:"No son números. Son vecinos.",
+ s1:"desahucios ejecutados en la Comunidad de Madrid en 2024",s2:"de los lanzamientos de la región son por impago del alquiler",
+ s3:"personas sin hogar atendidas en Madrid en 2024",s4:"personas duermen a la intemperie cada noche",
+ src1:"Fuente: CGPJ",src2:"Fuente: CGPJ",src3:"Fuente: Ayto. de Madrid",src4:"Fuente: Ayto. de Madrid",
+ story_tag:"Historia real",story_h:"Maricarmen, 87 años. 70 años en la misma casa.",
+ story_p1:"Maricarmen vivía en un sexto piso de la calle Alcalde Sainz de Baranda, en Retiro, desde 1956. Nunca dejó de pagar el alquiler. Al expirar su contrato de renta antigua, la empresa propietaria pidió el desalojo.",
+ story_p2:"El 23 de septiembre de 2026, al cuarto intento, la sacaron en camilla mientras cientos de vecinos gritaban «no estás sola». Murió dos semanas después en el hospital Gregorio Marañón.",
+ story_p3:"Su desahucio encendió la acampada por la vivienda en la Puerta del Sol y protestas en toda España.",
+ quote:"«Lo único que quería era morirse en su casa tranquila.»",quote_by:"— Portavoz del Sindicato de Inquilinas",
+ chain_h:"Así se pierde una casa",c1h:"Sube el alquiler",c1d:"El sueldo no sube al mismo ritmo.",c2h:"Llega el desahucio",c2d:"Contratos que vencen o no se pueden pagar.",c3h:"La calle",c3d:"Albergues llenos y noches a la intemperie.",c4h:"O una casa vacía",c4d:"Hay quien acaba ocupando por pura necesidad.",
+ ans_h:"Hay casas vacías y personas sin casa.",ans_h2:"Las unimos.",
+ ans_p:"Habita cruza tu oportunidad, tus ingresos y lo que necesitas cerca con viviendas reales del centro y la periferia, y te dice qué ayudas puedes pedir.",
+ st1h:"1 · Cuéntanos tu oportunidad",st1d:"— Estudios, prácticas o empleo, dónde es, tus ingresos y tu alquiler máximo.",
+ st2h:"2 · Analizamos tu perfil",st2d:"— Cruzamos precio, trayecto, servicios y tus circunstancias con datos reales de Madrid.",
+ st3h:"3 · Recibe tu propuesta",st3d:"— Te mostramos tus mejores opciones y te enviamos la propuesta a tu email.",
+ q_opp:"¿Qué oportunidad te trae a Madrid?",opp_estudios:"Estudios",opp_practicas:"Prácticas",opp_empleo:"Empleo",
+ q_where:"¿Dónde está tu oportunidad?",dest_label:"Distrito o municipio",grp_centro:"Centro (distritos de Madrid)",grp_periferia:"Periferia (municipios)",
+ q_money:"Tu dinero",income:"Ingresos mensuales (€)",budget:"Alquiler máximo (€/mes)",
+ q_live:"Cómo vives",household:"Personas en el hogar",commute:"Trayecto máximo (minutos)",share:"Compartiría piso",car:"Tengo coche",
+ q_needs:"¿Qué necesitas cerca?",
+ needs:{transporte_publico:"Transporte público",colegio:"Colegio",centro_salud:"Centro de salud",supermercado:"Supermercado",fibra:"Fibra",zonas_verdes:"Zonas verdes",accesibilidad:"Accesibilidad",guarderia:"Guardería",farmacia:"Farmacia",ocio:"Ocio"},
+ q_contact:"Recibe tu propuesta",contact_p:"Te enviaremos por email las viviendas que mejor encajan con tu perfil.",
+ name:"Tu nombre (opcional)",email:"Email",
+ consent:"Acepto que Habita trate mis datos para enviarme una propuesta de vivienda, según la",privacy_link:"política de privacidad",
+ consent_mkt:"Quiero recibir novedades de Habita (opcional).",
+ back:"Atrás",next:"Siguiente",submit:"Ver mis recomendaciones",loading:"Buscando…",
+ err_email:"Introduce un email válido.",err_consent:"Necesitamos tu consentimiento para continuar.",err_generic:"Revisa los datos: algún valor está fuera de rango.",
+ warn40:n=>`Ojo: el alquiler supera el 40 % de tus ingresos. Lo recomendable es como máximo ${n} €.`,
+ res_flow:"Flujo",res_centro:"Tus mejores opciones en el centro de Madrid",res_periferia:"Tus mejores opciones en la periferia de Madrid",
+ res_sent:e=>`Hemos guardado tu perfil. Te enviaremos la propuesta a ${e}.`,
+ none:"En breve recibirás una recomendación de nuestro asistente IA.",
+ aids:"Ayudas que podrías pedir",restart:"Empezar de nuevo",footer:"Prototipo de hackathon — datos de ejemplo",
+ aids_estudiante:[["Bono Alquiler Joven","https://sede.comunidad.madrid/node/285843"],["Ayudas de alojamiento de tu universidad","https://www.universidades.gob.es"],["Becas del Ministerio de Educación","https://www.becaseducacion.gob.es"]],
+ aids_no:[["Plan Alquila de la Comunidad de Madrid","https://www.comunidad.madrid/servicios/vivienda/plan-alquila"],["Ayudas municipales de la EMVS","https://www.emvs.es"],["Bono Alquiler Joven","https://sede.comunidad.madrid/node/285843"]]
+},
+en:{
+ nav_find:"Find a home",nav_reality:"The reality",ai:"AI-generated content",
+ kicker:"Madrid · housing emergency",h1a:"In Madrid, having a job",h1b:"no longer means having a home.",
+ sub:"Behind every eviction there's a whole life packed into boxes. We don't want yours to end up on the street.",
+ cta:"Find your home",cta2:"See the reality",cifras_h:"They're not numbers. They're neighbours.",
+ s1:"evictions carried out in the Madrid region in 2024",s2:"of the region's evictions are for unpaid rent",
+ s3:"homeless people assisted in Madrid in 2024",s4:"people sleep rough every night",
+ src1:"Source: CGPJ",src2:"Source: CGPJ",src3:"Source: Madrid City Council",src4:"Source: Madrid City Council",
+ story_tag:"True story",story_h:"Maricarmen, 87. Seventy years in the same home.",
+ story_p1:"Maricarmen had lived on the sixth floor of a building on Alcalde Sainz de Baranda street, in Retiro, since 1956. She never missed a rent payment. When her old-rent contract expired, the owning company sought her eviction.",
+ story_p2:"On 23 September 2026, on the fourth attempt, she was carried out on a stretcher while hundreds of neighbours chanted \"you're not alone\". She died two weeks later at Gregorio Marañón hospital.",
+ story_p3:"Her eviction sparked the housing protest camp in Puerta del Sol and demonstrations across Spain.",
+ quote:"\"All she wanted was to die peacefully in her own home.\"",quote_by:"— Tenants' Union spokesperson",
+ chain_h:"How a home is lost",c1h:"Rent goes up",c1d:"Wages don't keep pace.",c2h:"Eviction arrives",c2d:"Contracts that expire or can't be paid.",c3h:"The street",c3d:"Full shelters and nights sleeping rough.",c4h:"Or an empty flat",c4d:"Some end up squatting out of sheer need.",
+ ans_h:"There are empty homes and people without one.",ans_h2:"We bring them together.",
+ ans_p:"Habita matches your opportunity, income and what you need nearby with real homes in the centre and suburbs, and tells you which grants you can apply for.",
+ st1h:"1 · Tell us your opportunity",st1d:"— Studies, internship or job, where it is, your income and your max rent.",
+ st2h:"2 · We analyse your profile",st2d:"— We match price, commute, services and your situation with real Madrid data.",
+ st3h:"3 · Get your proposal",st3d:"— We show your best options and email you the proposal.",
+ q_opp:"What brings you to Madrid?",opp_estudios:"Studies",opp_practicas:"Internship",opp_empleo:"Job",
+ q_where:"Where is your opportunity?",dest_label:"District or municipality",grp_centro:"Centre (Madrid districts)",grp_periferia:"Suburbs (municipalities)",
+ q_money:"Your money",income:"Monthly income (€)",budget:"Max rent (€/month)",
+ q_live:"How you live",household:"People in the household",commute:"Max commute (minutes)",share:"I'd share a flat",car:"I have a car",
+ q_needs:"What do you need nearby?",
+ needs:{transporte_publico:"Public transport",colegio:"School",centro_salud:"Health centre",supermercado:"Supermarket",fibra:"Fibre internet",zonas_verdes:"Green areas",accesibilidad:"Accessibility",guarderia:"Nursery",farmacia:"Pharmacy",ocio:"Leisure"},
+ q_contact:"Get your proposal",contact_p:"We'll email you the homes that best fit your profile.",
+ name:"Your name (optional)",email:"Email",
+ consent:"I agree that Habita processes my data to send me a housing proposal, according to the",privacy_link:"privacy policy",
+ consent_mkt:"I'd like to receive Habita news (optional).",
+ back:"Back",next:"Next",submit:"See my recommendations",loading:"Searching…",
+ err_email:"Enter a valid email.",err_consent:"We need your consent to continue.",err_generic:"Please check your data: a value is out of range.",
+ warn40:n=>`Careful: rent is over 40 % of your income. We recommend at most ${n} €.`,
+ res_flow:"Flow",res_centro:"Your best options in central Madrid",res_periferia:"Your best options in the Madrid suburbs",
+ res_sent:e=>`We've saved your profile. We'll send the proposal to ${e}.`,
+ none:"You'll soon receive a recommendation from our AI assistant.",
+ aids:"Grants you could apply for",restart:"Start again",footer:"Hackathon prototype — sample data",
+ aids_estudiante:[["Youth Rent Bonus","https://sede.comunidad.madrid/node/285843"],["Your university's housing grants","https://www.universidades.gob.es"],["Ministry of Education scholarships","https://www.becaseducacion.gob.es"]],
+ aids_no:[["Plan Alquila (Madrid region)","https://www.comunidad.madrid/servicios/vivienda/plan-alquila"],["EMVS municipal grants","https://www.emvs.es"],["Youth Rent Bonus","https://sede.comunidad.madrid/node/285843"]]
+}};
+
+let lang = localStorage.getItem("habita-lang") || "es";
+let paso = 0;
+const NPASOS = 6;
+const f = { opportunity_type:"practicas", destination:"Moncloa-Aravaca", monthly_income:1150, max_housing_budget:450,
+  willing_to_share:true, has_car:false, max_commute_min:45, household_size:1, essential_needs:["transporte_publico"] };
+
+const $ = id => document.getElementById(id);
+const T = () => I18N[lang];
+
+function setLang(l){
+  lang = l; localStorage.setItem("habita-lang", l);
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const k=el.dataset.i18n; if(T()[k]) el.textContent=T()[k]; });
+  $("btn-es").classList.toggle("on", l==="es"); $("btn-en").classList.toggle("on", l==="en");
+  renderOpp(); renderDest(); renderNeeds(); renderToggles(); renderStep();
+}
+
+function renderOpp(){
+  $("opts-opp").innerHTML = ["estudios","practicas","empleo"].map(v=>
+    `<button type="button" class="opt ${f.opportunity_type===v?"on":""}" onclick="pick('${v}')">${T()["opp_"+v]}</button>`).join("");
+}
+function renderDest(){
+  const g=(lbl,arr)=>`<optgroup label="${lbl}">${arr.map(d=>`<option ${d===f.destination?"selected":""}>${d}</option>`).join("")}</optgroup>`;
+  $("dest").innerHTML = g(T().grp_centro,DISTRITOS)+g(T().grp_periferia,MUNICIPIOS);
+  $("dest").value = f.destination;
+}
+function renderNeeds(){
+  $("chips-needs").innerHTML = NECESIDADES.map(n=>
+    `<button type="button" class="opt ${f.essential_needs.includes(n)?"on":""}" onclick="toggleNeed('${n}')">${T().needs[n]}</button>`).join("");
+}
+function renderToggles(){
+  $("opt-share").textContent=T().share; $("opt-car").textContent=T().car;
+  $("opt-share").classList.toggle("on",f.willing_to_share); $("opt-car").classList.toggle("on",f.has_car);
+}
+function pick(v){ f.opportunity_type=v; renderOpp(); checkWarn(); }
+function toggle(k){ if(k==="share")f.willing_to_share=!f.willing_to_share; else f.has_car=!f.has_car; renderToggles(); checkWarn(); }
+function toggleNeed(n){ f.essential_needs = f.essential_needs.includes(n) ? f.essential_needs.filter(x=>x!==n) : [...f.essential_needs,n]; renderNeeds(); }
+
+function readNums(){
+  f.monthly_income=+$("income").value||0; f.max_housing_budget=+$("budget").value||0;
+  f.household_size=Math.max(1,+$("hh").value||1); f.max_commute_min=+$("commute").value||45;
+  f.destination=$("dest").value;
+}
+function checkWarn(){
+  readNums();
+  const exceso = !(f.opportunity_type!=="empleo" && f.willing_to_share) && f.max_housing_budget > f.monthly_income*0.4;
+  $("warn40").classList.toggle("hidden",!exceso);
+  if(exceso) $("warn40").textContent=T().warn40(Math.round(f.monthly_income*0.4));
+}
+
+function renderStep(){
+  document.querySelectorAll(".step").forEach(s=>s.classList.toggle("hidden",+s.dataset.step!==paso));
+  $("bar").style.width=((paso+1)/NPASOS*100)+"%";
+  $("btn-back").disabled=paso===0;
+  $("btn-next").textContent = paso<NPASOS-1 ? T().next : T().submit;
+  $("err").classList.add("hidden");
+  if(paso===2) checkWarn();
+}
+function prev(){ if(paso>0){paso--;renderStep();} }
+function showErr(m){ $("err").textContent=m; $("err").classList.remove("hidden"); }
+
+function next(){
+  readNums();
+  if(paso<NPASOS-1){ paso++; renderStep(); return; }
+  // Validación final
+  const email=$("email").value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length>255) return showErr(T().err_email);
+  if(!$("consent").checked) return showErr(T().err_consent);
+  if(f.max_housing_budget<100||f.max_housing_budget>10000||f.monthly_income<0||f.monthly_income>50000) return showErr(T().err_generic);
+  submit(email);
+}
+
+async function submit(email){
+  $("btn-next").disabled=true; $("btn-next").textContent=T().loading;
+  const tipo = f.opportunity_type==="empleo" ? "no_estudiante" : "estudiante";
+  const zona = DISTRITOS.includes(f.destination) ? "centro" : "periferia";
+  const flujo = tipo==="estudiante" ? (zona==="centro"?"A":"B") : (zona==="centro"?"C":"D");
+  const payload = {
+    profile_id: "web-"+Date.now(),
+    profile: { name:$("name").value.trim(), email, language:lang,
+      opportunity_type:f.opportunity_type, destination:f.destination,
+      monthly_income:f.monthly_income, max_housing_budget:f.max_housing_budget,
+      willing_to_share:f.willing_to_share, has_car:f.has_car,
+      max_commute_min:f.max_commute_min, household_size:f.household_size,
+      essential_needs:f.essential_needs.join(","),
+      consent_privacy:true, consent_marketing:$("mkt").checked,
+      consent_at:new Date().toISOString() },
+    tipo, zona, flujo
+  };
+  try {
+    await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  } catch(e){ console.warn("Webhook no alcanzable", e); }
+  $("res-flow").textContent = `${T().res_flow} ${flujo} · ${tipo==="estudiante"?(lang==="es"?"Estudiante":"Student"):(lang==="es"?"No estudiante":"Non-student")}`;
+  $("res-title").textContent = zona==="centro" ? T().res_centro : T().res_periferia;
+  $("res-sent").textContent = T().res_sent(email);
+  const aids = tipo==="estudiante" ? T().aids_estudiante : T().aids_no;
+  $("aids-list").innerHTML = aids.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noreferrer">${t}</a></li>`).join("");
+  $("form-view").classList.add("hidden"); $("result-view").classList.remove("hidden");
+  window.scrollTo(0,0);
+  $("btn-next").disabled=false;
+}
+function restart(){
+  paso=0; $("consent").checked=false; $("mkt").checked=false;
+  $("result-view").classList.add("hidden"); $("form-view").classList.remove("hidden"); renderStep();
+}
+["income","budget"].forEach(id=>$(id).addEventListener("input",checkWarn));
+setLang(lang);
+</script>
+</body>
+</html>
